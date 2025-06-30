@@ -1,3 +1,5 @@
+python-dotenv
+openai
 streamlit
 pdfminer.six
 python-docx
