@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+from src.validation import validate_file
 
 st.set_page_config("Clarity Coach Prototype", layout='centered')
 st.title("Clarity Coach Prototype")
@@ -15,10 +16,15 @@ if upload_file:
         
     st.success(f"Uploaded file: {upload_file.name}") 
 
-    st.info("Extracting content...")
-    extracted_text = "Here's your data extracted from the file"
+    validation_result = validate_file(filepath)
 
-    st.subheader("Final output: ")
-    st.text_area("Output: ", extracted_text, height=300)
-    
-      
+    if not validation_result["supported"]:
+        st.error(f"Unsupported file type: {validation_result.get('reason', '')}")
+
+    elif not validation_result["is_resume"]:
+        st.warning("The uploaded file does not appear to be a resume.")
+
+    else:
+        st.info("Extracted preview of your file content:")
+        st.text_area("Extracted Text", validation_result["extracted_text"], height=300)
+
