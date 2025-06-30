@@ -1,6 +1,8 @@
 import os
 from pdfminer.high_level import extract_text as extract_pdf_text
 from docx import Document
+from src.prompts import resume_check
+from src.services.model_client import ask_model
 
 SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".txt"}
 
@@ -32,6 +34,11 @@ def extract_text(file_path: str) -> str:
         return ""
     return ""
 
+def is_resume_advanced(text: str) -> bool:
+    snippet = text[:1500]
+    answer = ask_model(resume_check, snippet).lower()
+    return answer.startswith("yes")
+
 """
     Validate the uploaded file:
     - Check if file type is supported
@@ -50,16 +57,23 @@ def validate_file(file_path: str) -> dict:
         }
 
     extracted_text = extract_text(file_path)
-    is_resume_file = is_resume(extracted_text)
 
-    is_digital_pdf = None
-    if ext == ".pdf":
-        is_digital_pdf = len(extracted_text.strip()) > 0
+    if not is_resume(extracted_text):
+        return {
+            "supported": True,
+            "file_type": ext,
+            "is_digital_pdf": len(extracted_text.strip()) > 0 if ext == ".pdf" else None,
+            "is_resume": False,
+            "extracted_text": extracted_text
+        }
+
+    # Call renamed and optimized advanced check
+    is_resume_file = is_resume_advanced(extracted_text)
 
     return {
         "supported": True,
         "file_type": ext,
-        "is_digital_pdf": is_digital_pdf,
+        "is_digital_pdf": len(extracted_text.strip()) > 0 if ext == ".pdf" else None,
         "is_resume": is_resume_file,
         "extracted_text": extracted_text
     }
