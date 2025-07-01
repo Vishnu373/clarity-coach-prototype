@@ -3,7 +3,7 @@ import os
 from src.validation import validate_file
 from src.extraction import DigitalPDFPipeline
 from src.extraction import WordDocxPipeline
-# from src.extraction import TxtPipeline
+from src.extraction import TxtPipeline
 
 st.set_page_config("Clarity Coach Prototype", layout='centered')
 st.title("Clarity Coach Prototype")
@@ -57,14 +57,14 @@ if upload_file:
                 st.write(f"Table {idx + 1}")
                 st.write(table)
 
-    # elif validation_result["file_type"] == ".txt":
-    #     st.info("Running Text File Extraction Pipeline...")
+    elif validation_result["file_type"] == ".txt":
+        st.info("Running Text File Extraction Pipeline...")
 
-    #     pipeline = TxtPipeline(filepath)
-    #     result = pipeline.run_pipeline()
+        pipeline = TxtPipeline(filepath)
+        result = pipeline.run_pipeline()
 
-    #     st.subheader("Cleaned Text Output")
-    #     st.text_area("Resume Text", result["text"], height=300)
+        st.subheader("Cleaned Text Output")
+        st.text_area("Resume Text", result["text"], height=300)
 
     # else:
     #     st.info("Extracted preview of your file content:")
