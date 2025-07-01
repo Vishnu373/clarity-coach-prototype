@@ -1,12 +1,12 @@
 import os
 from pdfminer.high_level import extract_text as extract_pdf_text
-from docx import Document
-from src.prompts import resume_check
-from src.services.model_client import ask_model
+# from docx import Document
+# from src.prompts import resume_check
+# from src.services.model_client import ask_model
 
 SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".txt"}
 
-RESUME_KEYWORDS = {"experience", "education", "skills", "summary", "projects"}
+# RESUME_KEYWORDS = {"experience", "education", "skills", "summary", "projects"}
 
 def get_file_extension(file_path: str) -> str:
     return os.path.splitext(file_path)[-1].lower()
@@ -15,6 +15,7 @@ def is_supported(file_path: str) -> bool:
     ext = get_file_extension(file_path)
     return ext in SUPPORTED_EXTENSIONS
 
+"""
 def is_resume(text: str) -> bool:
     text = text.lower()
     return any(keyword in text for keyword in RESUME_KEYWORDS)
@@ -33,19 +34,15 @@ def extract_text(file_path: str) -> str:
     except Exception:
         return ""
     return ""
+"""
 
+"""
 def is_resume_advanced(text: str) -> bool:
     snippet = text[:1500]
     answer = ask_model(resume_check, snippet).lower()
     return answer.startswith("yes")
-
 """
-    Validate the uploaded file:
-    - Check if file type is supported
-    - Perform minimal text extraction
-    - For PDFs, determine if scanned or digital based on extracted text presence
-    - Check if extracted text appears to be a resume
- """
+
 def validate_file(file_path: str) -> dict:
     ext = get_file_extension(file_path)
 
@@ -56,6 +53,22 @@ def validate_file(file_path: str) -> dict:
             "extracted_text": ""
         }
 
+    # Minimal check for PDF: digital if extractable text exists, else scanned
+    is_digital_pdf = None
+    if ext == ".pdf":
+        try:
+            extracted_text = extract_pdf_text(file_path)
+            is_digital_pdf = len(extracted_text.strip()) > 0
+        except Exception:
+            is_digital_pdf = False
+
+    return {
+        "supported": True,
+        "file_type": ext,
+        "is_digital_pdf": is_digital_pdf
+    }
+
+"""
     extracted_text = extract_text(file_path)
 
     if not is_resume(extracted_text):
@@ -77,3 +90,4 @@ def validate_file(file_path: str) -> dict:
         "is_resume": is_resume_file,
         "extracted_text": extracted_text
     }
+"""
