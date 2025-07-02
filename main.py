@@ -25,12 +25,5 @@ if upload_file:
         st.info("Running appropriate extraction pipeline...")
         result = run_resume_pipeline(filepath, validation_result)
 
-        if result:
-            st.subheader("Cleaned Text Output")
-            st.text_area("Resume Text", result.get("text", ""), height=300)
-
-            if result.get("tables"):
-                st.subheader("Extracted Tables")
-                for idx, table in enumerate(result["tables"]):
-                    st.write(f"Table {idx + 1}")
-                    st.write(table)
+    st.subheader("Structured Resume Output")
+    st.text_area("Model Output (Raw JSON String)", result, height=400)

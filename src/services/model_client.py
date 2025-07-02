@@ -8,7 +8,7 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=api_key)
 
-def ask_model(prompt_template: str, text: str) -> str:
+def model(prompt_template: str, text: str) -> str:
     prompt = prompt_template.format(text=text)
 
     response = client.chat.completions.create(
