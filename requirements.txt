@@ -4,5 +4,6 @@ streamlit
 pdfminer.six
 python-docx
 python-dotenv
-camelot-py[base]
+camelot-py
 pdfplumber
+boto3

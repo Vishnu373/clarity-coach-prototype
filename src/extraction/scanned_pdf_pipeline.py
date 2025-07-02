@@ -65,17 +65,18 @@ class ScannedPdfPipeline:
             else:
                 response = self.textract.get_document_text_detection(JobId=self.job_id)
 
-            # Print text
-            print("\nText:")
             for block in response['Blocks']:
+                # Print text
                 if block['BlockType'] == 'LINE':
                     pages.append(block['Text'])
 
+                # Print key value pairs
                 elif block['BlockType'] == 'KEY_VALUE_SET':
-                    key_value_pairs.append(block)  # Already structured
+                    key_value_pairs.append(block)
 
+                # Print tables
                 elif block['BlockType'] == 'TABLE':
-                    tables.append(block)  # Structured, contains relationships            
+                    tables.append(block)       
 
             next_token = response.get('NextToken')
             if not next_token:
@@ -106,8 +107,14 @@ class ScannedPdfPipeline:
             if not self.wait_for_completion():
                 raise Exception("Textract job failed.")
 
-            extracted_text = self.get_results()
-            return extracted_text
+            extracted = self.get_results()
+
+            return {
+                "text": "\n".join(extracted["pages"]),  # Consistent with other pipelines
+                "key_value_pairs": extracted["key_value_pairs"],
+                "tables": extracted["tables"]
+            }
+
         finally:
             self.cleanup()
 
