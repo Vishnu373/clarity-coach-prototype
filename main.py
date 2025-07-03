@@ -2,6 +2,7 @@ import streamlit as st
 import os
 from src.validation import validate_file
 from src.pipeline.resume_pipeline import run_resume_pipeline
+from src.pipeline.rag_pipeline import RAGPipeline
 
 st.set_page_config("Clarity Coach Prototype", layout='centered')
 st.title("Clarity Coach Prototype")
@@ -24,6 +25,9 @@ if upload_file:
     else:
         st.info("Running appropriate extraction pipeline...")
         result = run_resume_pipeline(filepath, validation_result)
+
+        rag = RAGPipeline()
+        result = rag.run_rag_pipeline(result)
 
     st.subheader("Structured Resume Output")
     st.text_area("Model Output (Raw JSON String)", result, height=400)

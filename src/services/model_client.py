@@ -8,9 +8,12 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=api_key)
 
-def model(prompt_template: str, text: str) -> str:
-    prompt = prompt_template.format(text=text)
-
+def model(prompt_template: str, text: str = "") -> str:
+    if "{text}" in prompt_template:
+        prompt = prompt_template.format(text=text)
+    else:
+        prompt = prompt_template  # already fully formatted
+    
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
@@ -20,3 +23,11 @@ def model(prompt_template: str, text: str) -> str:
         temperature=0.5
     )
     return response.choices[0].message.content.strip()
+
+def get_embedding(text, model = "text-embedding-3-small"):
+    text = text.replace("\n", " ")
+    response = client.embeddings.create (
+        input = [text],
+        model = model
+    )
+    return response.data[0].embedding

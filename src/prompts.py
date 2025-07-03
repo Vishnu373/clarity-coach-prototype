@@ -1,41 +1,54 @@
-resume_check = """
-You are a helpful assistant that identifies resume documents.
+structure_filter_prompt = """
+You are a helpful assistant that extracts structured information from resumes. The input text may be in various formats.
+Extract and return structured data in TWO formats:
+STRUCTURED RESUME:
+Return a complete JSON object with the following fields:
+experience: An array of work experience entries. Each entry should have:
+title: Job title or role name (string)
+location: Job location (city, country) if available, else null
+duration: Duration of the role (string)
+responsibilities: Full text description of responsibilities and achievements (string)
+projects: An array of notable projects mentioned anywhere in the resume. Each project should be a concise point or summary, with:
+title: Project title or short phrase summarizing the project (string)
+description: Brief description of the project (string)
+awards: An array of awards and achievements (array of strings, or empty array if none)
+publications: An array of publications (array of strings, or empty array if none)
 
-Below is the extracted text from a document.
-Your job is to decide if this is a resume. 
-Reply only with "Yes" if it's a resume or "No" if it is not. 
-Do not provide any explanation.
+FILTERED EXPERIENCE DATA:
+Additionally, filter and format only experience-related content into this specific JSON format:
+json[
+  {{
+    "role": "Job Title/Position",
+    "skills": ["skill1", "skill2", "skill3"],
+    "projects": [
+      "Brief description of project/achievement 1",
+      "Brief description of project/achievement 2",
+      "Brief description of project/achievement 3"
+    ]
+  }}
+]
 
-Text:
-{text}
-"""
+Filtering Guidelines:
+Focus only on professional work experience and internships
+Extract skills mentioned or implied in each role's responsibilities
+Convert key responsibilities and achievements into concise project descriptions
+Limit to 3-5 most relevant skills and projects per role
+If a role has no specific projects, include key responsibilities as project-like entries
 
-structuring_prompt = """
-You are a helpful assistant. Your job is to extract structured information from a resume.
-The information was extracted from a resume file and is provided as plain text.
-So, the text can contain:
-1. plain text
-2. tables 
-3. multi column layout format as well
+Output Format:
+Present your response as:
+STRUCTURED_RESUME:
+[Complete structured resume JSON here]
+FILTERED_EXPERIENCE:
+[Filtered experience JSON array here]
+Important Rules:
 
-Return the following information in JSON format:
-name: Full name of the person
-email: Email address
-phone: Phone number
-location: Current city and country (if available)
-skills: List of technical and soft skills
-education: List of degrees with institution, graduation year (if available)
-experience: List of jobs including title, company, duration, and responsibilities
-projects: List of notable projects (with title + descriptions)
-publications: if avaialable
-awards: if available
-
-Note: If the projects are mentioned under the experience section, no need to print it again in projects part.
-
-Guidelines:
-Return only valid JSON. No explanations, no extra text, and no markdown formatting.
-Do not hallucinate data.
-If any fields are missing, leave them as empty lists or null.
+Return ONLY the JSON objects under the specified headers - no explanations, no markdown code blocks, no extra text
+Do not fabricate or hallucinate any information
+Do not create duplicates between the projects field and filtered experience projects
+If a field has no data, use empty arrays [] or null appropriately
+Ensure all JSON is properly formatted and valid
+For filtered experience, focus on actionable achievements and specific technologies/tools mentioned
 
 Text:
 {text}

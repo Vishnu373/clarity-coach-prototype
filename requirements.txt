@@ -7,3 +7,5 @@ python-dotenv
 camelot-py
 pdfplumber
 boto3
+faiss-cpu
+numpy
