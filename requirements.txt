@@ -1,2 +1,11 @@
 python-dotenv
 openai
+streamlit
+pdfminer.six
+python-docx
+python-dotenv
+camelot-py
+pdfplumber
+boto3
+faiss-cpu
+numpy
