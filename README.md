@@ -3,8 +3,8 @@
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
-cd <repo-folder>
+git clone https://github.com/Vishnu373/clarity-coach-prototype.git
+cd clarity-coach-prototype
 ```
 
 ### 2. Create and activate a virtual environment
