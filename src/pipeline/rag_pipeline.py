@@ -26,7 +26,6 @@ class RAGPipeline:
 
         return retrieved_data
 
-
     # 2, 3. Augmented and Generation
     def augment_and_generate(self, extracted_data, retrieved_chunks):
         context = "\n\n".join(retrieved_chunks)
@@ -44,4 +43,3 @@ class RAGPipeline:
         result = self.augment_and_generate(extracted_resume_text, result)
 
         return result
-
