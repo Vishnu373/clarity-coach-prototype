@@ -60,4 +60,6 @@ def process_file(filename: str, file_bytes: bytes, bucket_name: str = None) -> d
     else:
         return {"error": f"No pipeline available for file type: {ext}"}
 
-    return pipeline.run_pipeline()
+    extracted_data = pipeline.run_pipeline()
+    
+    return extracted_data

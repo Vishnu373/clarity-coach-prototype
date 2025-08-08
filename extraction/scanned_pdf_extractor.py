@@ -9,10 +9,10 @@ class ScannedPdfPipeline:
         self.s3_client = S3Client(region=region, bucket_name=bucket_name)
         self.textract_client = TextractClient(region=region)
 
-    def run_pipeline(self, object_name: str):
+    def run_pipeline(self):
         try:
             # Upload to S3
-            self.s3_client.upload_file(BytesIO(self.file_bytes), object_name)
+            object_name = self.s3_client.upload_file(BytesIO(self.file_bytes))
 
             # Extract text
             textract_result = self.textract_client.detect_document_text(self.bucket_name, object_name)
