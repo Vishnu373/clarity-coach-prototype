@@ -1,7 +1,7 @@
 # retrieve.py
 from services.model_client import embedding_model
 from rag.indexing import search_similar
-from services.model_processor import get_cached_data, get_rag_input, get_market_intelligence_input
+from services.model_processor import get_rag_input, get_market_intelligence_input, get_processed_data
 
 """
 Get the matching job roles and responbilites/projects for each user's experience from the knowledge base.
@@ -17,3 +17,5 @@ def retrieve_chunks(exp, top_k=50):
     return results
 
 rag_input = get_rag_input()
+
+print(get_processed_data())

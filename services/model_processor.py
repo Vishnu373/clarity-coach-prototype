@@ -60,7 +60,7 @@ def process_with_model(extracted_data: dict) -> Tuple[dict, dict, dict]:
         raise ValueError(f"JSON parse error: {e}")
 
 # Getter functions to download from S3
-def get_cached_data():
+def get_processed_data():
     json_data = s3_client.download_file(_s3_keys['data'])
     return json.loads(json_data)
 
