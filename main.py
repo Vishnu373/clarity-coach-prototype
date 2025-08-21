@@ -1,8 +1,8 @@
 import streamlit as st
 from services.extraction_service import process_file
-from services.model_processor import process_with_model
 from dotenv import load_dotenv
 import os
+from services.model_processor import process_with_model
 
 load_dotenv()
 BUCKET_NAME = os.getenv("AWS_S3_BUCKET")
@@ -23,7 +23,7 @@ if uploaded_file:
     else:
         try:
             processed_data, _, _ = process_with_model(extracted_data)
-            
             st.json(processed_data)
+
         except Exception as e:
             st.error(f"Error processing with model: {e}")

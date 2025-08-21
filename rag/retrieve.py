@@ -1,18 +1,19 @@
-from dotenv import load_dotenv
-from rag.embedding import generate_embeddings
+# retrieve.py
+from services.model_client import embedding_model
 from rag.indexing import search_similar
+from services.model_processor import get_cached_data, get_rag_input, get_market_intelligence_input
 
-load_dotenv()
+"""
+Get the matching job roles and responbilites/projects for each user's experience from the knowledge base.
+"""
+def retrieve_chunks(exp, top_k=50):
+    role = exp["role"].strip()
+    skills = [s.strip() for s in exp.get("skills", [])][:5]
+    query = f"{role} with {', '.join(skills)}" if skills else role
 
-# Example query
-query = "Web developer"
+    qvec = embedding_model(query)
+    results = search_similar(qvec, top_k=top_k)
 
-# 1. Embed the query
-query_embedding = generate_embeddings([{"chunk_id": 0, "content": query}])[0]["embedding"]
+    return results
 
-# 2. Search in Supabase
-results = search_similar(query_embedding, top_k=3)
-
-print("Results:")
-for r in results:
-    print(f"- {r['content']} (similarity={r['similarity']:.3f})")
+rag_input = get_rag_input()

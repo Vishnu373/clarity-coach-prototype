@@ -20,6 +20,14 @@ class S3Client:
         except ClientError as e:
             raise RuntimeError(f"Error uploading file: {e}")
 
+    def download_file(self, key: str) -> str:
+        """Download file content as string"""
+        try:
+            response = self.s3.get_object(Bucket=self.bucket_name, Key=key)
+            return response['Body'].read().decode('utf-8')
+        except ClientError as e:
+            raise RuntimeError(f"Error downloading file: {e}")
+
     def delete_file(self, key: str) -> None:
         try:
             self.s3.delete_object(Bucket=self.bucket_name, Key=key)
