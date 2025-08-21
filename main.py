@@ -11,17 +11,15 @@ uploaded_file = st.file_uploader("Upload a file:", type=["pdf", "docx", "txt"])
 if uploaded_file:
     file_bytes = uploaded_file.read()
 
-    # Step 1: Extract data
     extracted_data = process_file(uploaded_file.name, file_bytes, bucket_name=AWS_BUCKET_NAME)
     
     if "error" in extracted_data:
         st.error(extracted_data["error"])
     
     else:
-        # Step 2: AI structuring + filtering
         try:
-            processed_data = process_with_model(extracted_data)
-            # Step 3: Display nicely
+            processed_data, _, _ = process_with_model(extracted_data)
+            
             st.json(processed_data)
         except Exception as e:
             st.error(f"Error processing with model: {e}")
