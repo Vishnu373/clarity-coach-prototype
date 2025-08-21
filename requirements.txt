@@ -8,3 +8,6 @@ pdfplumber
 boto3
 faiss-cpu
 numpy
+langchain
+tiktoken
+supabase

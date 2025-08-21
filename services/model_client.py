@@ -12,7 +12,7 @@ def gpt_model(prompt_template: str, text: str = "") -> str:
     if "{text}" in prompt_template:
         prompt = prompt_template.format(text=text)
     else:
-        prompt = prompt_template  # already fully formatted
+        prompt = prompt_template
     
     response = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -23,3 +23,11 @@ def gpt_model(prompt_template: str, text: str = "") -> str:
         temperature=0.5
     )
     return response.choices[0].message.content.strip()
+
+def embedding_model(text):
+    text = text.replace("\n", " ")
+    response = client.embeddings.create (
+        input = [text],
+        model = "text-embedding-3-small"
+    )
+    return response.data[0].embedding
