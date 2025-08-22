@@ -57,26 +57,28 @@ GLOBAL RULES:
 - If no data for a field, use empty arrays [] or null.
 - Format with indentation for readability.
 
+RULES REGARDING RESUME_STRUCTURED:
+- Fetch all the job experiences the user has done throughout his career.
+- If the user has done any personal or side projects - include it in the experience part at last.
+- In case of personal or side projects - carefully analyze the responsbilities and assign a "role" accordingly.
+- Analyze the user's skills and the skill set used in the project and then mention top 3 skills in the "skills" section.
+- Don't make the skills like general make it specific like what technology was used if available.
+- Just the skills must be in the list no index number required.
+- Avoid hallucination as much as possible.
+
 The JSON must have exactly TWO top-level keys:
 1. RESUME_STRUCTURED
 2. MARKET_INTEL
 
-{{
-  "RESUME_STRUCTURED": {{
+{{ 
+    "RESUME_STRUCTURED": {{
     "experience": [
       {{
-        "title": string,
-        "location": string|null,
-        "duration": string,
+        "role": string,
+        "skills": string,
         "responsibilities": string,
-        "projects": [
-          {{ "title": string, "description": string }}
-        ]
       }}
-    ],
-    "awards": [string],
-    "publications": [string],
-    "skills": [string]
+    ]
   }},
   "MARKET_INTEL": {{
     "current_location_inferred": {{
@@ -91,4 +93,35 @@ The JSON must have exactly TWO top-level keys:
 
 TEXT:
 {text}
+"""
+
+AUGMENT_PROMPT = """
+You are an AI resume coach. You are getting some data which is retrieved data.
+The retrieved data is in dictionary format.
+The main components of the retrieval_results are:
+role - What was the job title for which the retrieval was done?
+query - The job title with the skills combined
+results - Matching data found from the existing knowledge base.
+
+Here are the retrieved matches from the knowledge base:
+{retrieval_results}
+
+TASK:
+For each role the user have done:
+1. Suggest upto 10 new bullet points/responsibilities the user might plausibly have done.
+
+RULES:
+- Base suggestions on the reference knowledge and the user’s role/skills.
+- Keep each bullet concise, past tense, action-oriented.
+- Avoid duplicates of existing bullets.
+- Do NOT invent employers, dates, or personal details.
+- Return ONLY a JSON array of strings.
+
+Give me the final output in following format for each role:
+1. role - the title of the job
+2. repsonsbilities - all the 10 bullet points/responsbilities line by line no other extra context required
+"role": {{
+"repsonsbilities": {{
+}} 
+}}
 """

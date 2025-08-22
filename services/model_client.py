@@ -24,6 +24,21 @@ def gpt_model(prompt_template: str, text: str = "") -> str:
     )
     return response.choices[0].message.content.strip()
 
+def rag_model(prompt_template: str, text: str = "") -> str:
+    if "{text}" in prompt_template:
+        prompt = prompt_template.format(text=text)
+    else:
+        prompt = prompt_template
+    
+    response = client.chat.completions.create(
+        model="gpt-5-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+    )
+    return response.choices[0].message.content.strip()
+
 def embedding_model(text):
     text = text.replace("\n", " ")
     response = client.embeddings.create (
