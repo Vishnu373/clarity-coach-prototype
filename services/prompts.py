@@ -54,7 +54,6 @@ Your job is to restructure it into a clean, standardized format.
 Rules:
 - Only use information present in the resume. Do not add or hallucinate anything.
 - Preserve all original information; organize it clearly under into sections.
-
 Input:
 {text}
 """

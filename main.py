@@ -3,10 +3,8 @@ from services.extraction_service import process_file
 from dotenv import load_dotenv
 import os
 from services.model_processor import process_with_model
-from services.model_client import gpt_model
-from services.prompts import RESTRUCTURE_RESUME_PROMPT
 
-import json
+from input_preparation.restructuring import restructure_resume
 
 load_dotenv()
 BUCKET_NAME = os.getenv("AWS_S3_BUCKET")
@@ -20,6 +18,9 @@ if uploaded_file:
     file_bytes = uploaded_file.read()
 
     extracted_data = process_file(uploaded_file.name, file_bytes, bucket_name=BUCKET_NAME)
+    
+    # Testing out to see if the data gets stored in S3
+    restructure_resume(extracted_data)
 
     if "error" in extracted_data:
         st.error(extracted_data["error"])
