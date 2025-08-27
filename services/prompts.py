@@ -46,6 +46,19 @@
 # {text}
 # """
 
+RESTRUCTURE_RESUME_PROMPT = """
+You are a helpful AI structurer.  
+You received a messy resume.
+Your job is to restructure it into a clean, standardized format.
+
+Rules:
+- Only use information present in the resume. Do not add or hallucinate anything.
+- Preserve all original information; organize it clearly under into sections.
+
+Input:
+{text}
+"""
+
 HYBRID_EXTRACTION_PROMPT = """
 Extract structured information from the following resume text into ONE valid JSON object exactly as defined.
 
