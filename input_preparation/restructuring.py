@@ -32,4 +32,4 @@ def get_restructured_data():
     restructured_data = s3_client.download_file(_s3_key['restructured_data'])
     return restructured_data
 
-print(get_restructured_data())
+# print(get_restructured_data())

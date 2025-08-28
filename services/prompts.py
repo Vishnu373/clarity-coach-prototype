@@ -137,3 +137,39 @@ Give me the final output in following format for each role:
 }} 
 }}
 """
+
+IMF_CLASSIFICATION_PROMPT = """You are an expert resume classifier. Classify the following resume according to these tables:
+
+Table 1: Task Modifier
+Routine Tasks → Examples: Data entry, scheduling
+Creative Tasks → Examples: Storytelling, branding
+Hybrid AI Collaboration → Examples: AI-assisted coding, diagnostics
+
+Table 2: Industry Risk Adjustment
+High Risk → Examples: Tech, Finance, Manufacturing
+Medium Risk → Examples: Healthcare, Retail, Logistics
+Low Risk → Examples: Education, Arts, Social Services
+
+Table 3: Skill Modifier
+Routine Physical → Examples: Assembly, warehousing
+Routine Cognitive → Examples: Basic math, form processing
+Creative Problem Solving → Examples: Strategy, design thinking
+Emotional Intelligence → Examples: Leadership, negotiation
+AI Collaboration → Examples: Prompting, tool orchestration
+
+**Instructions:** 
+- Read the resume carefully.
+- Identify the task type, industry, and key skills.
+- Map each to the closest category in the tables.
+- It must come under one category from each table.
+
+**Output Format:**
+- Output in this exact format as string variables
+- As a single line string without any newline characters as below:
+Task Modifier: <category from Table 1>, Industry Risk Adjustment: <category from Table 2>, Skill Modifier: <category from Table 3>
+
+**Important:**
+- Return ONLY the classification string.
+
+Resume: {text}
+"""
