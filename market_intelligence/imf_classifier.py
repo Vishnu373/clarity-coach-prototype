@@ -1,6 +1,6 @@
 from services.prompts import IMF_CLASSIFICATION_PROMPT
 import json
-from services.restructuring import get_restructured_data
+from analysis_and_enhancement.restructuring import get_restructured_data
 from services.model_client import gpt_model
 import re
 

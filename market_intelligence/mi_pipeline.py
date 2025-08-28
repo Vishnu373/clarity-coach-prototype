@@ -1,6 +1,6 @@
 from market_intelligence.imf_classifier import parse_results
 from market_intelligence.role_exposure import score_calculator
-from services.restructuring import get_restructured_data
+from analysis_and_enhancement.restructuring import get_restructured_data
 from market_intelligence.imf_classifier import classifier
 from services.s3_client import S3Client
 

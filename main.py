@@ -2,9 +2,7 @@ import streamlit as st
 from services.extraction_service import process_file
 from dotenv import load_dotenv
 import os
-from services.model_processor import process_with_model
-
-from input_preparation.restructuring import restructure_resume
+from analysis_and_enhancement.ae_pipeline import run_pipeline
 
 load_dotenv()
 BUCKET_NAME = os.getenv("AWS_S3_BUCKET")
@@ -18,17 +16,14 @@ if uploaded_file:
     file_bytes = uploaded_file.read()
 
     extracted_data = process_file(uploaded_file.name, file_bytes, bucket_name=BUCKET_NAME)
-    
-    # Testing out to see if the data gets stored in S3
-    restructure_resume(extracted_data)
 
     if "error" in extracted_data:
         st.error(extracted_data["error"])
     
     else:
         try:
-            processed_data, _, _ = process_with_model(extracted_data)
-            st.json(processed_data)
+            suggested_results = run_pipeline(extracted_data)
+            st.json(suggested_results)
 
         except Exception as e:
             st.error(f"Error processing with model: {e}")
