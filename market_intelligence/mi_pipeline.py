@@ -2,6 +2,7 @@ from market_intelligence.imf_classifier import parse_results
 from market_intelligence.role_exposure import score_calculator
 from services.restructuring import get_restructured_data
 from market_intelligence.imf_classifier import classifier
+from services.s3_client import S3Client
 
 def run_pipeline():
     # 1. Getting the data
@@ -15,6 +16,9 @@ def run_pipeline():
 
     # 4. Calculating the score
     final_score, risk_level, interpretation = score_calculator(task_category, industry_category, skill_category)
+
+    # 5. Delete files from S3
+#    S3Client().delete_file("restructured_data.txt")
 
     # Output
     print(f"Based on the IMF’s Gen-AI report (2024): {final_score}, {risk_level}, {interpretation}")

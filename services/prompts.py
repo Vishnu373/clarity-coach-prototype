@@ -161,6 +161,7 @@ AI Collaboration → Examples: Prompting, tool orchestration
 - Read the resume carefully.
 - Identify the task type, industry, and key skills.
 - Map each to the closest category in the tables.
+- Fro table 1 and table 3 - choose multiple categories if available.
 - It must come under one category from each table.
 
 **Output Format:**

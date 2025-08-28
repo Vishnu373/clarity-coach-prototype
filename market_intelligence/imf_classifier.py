@@ -12,10 +12,10 @@ def classifier(data):
 
     return imf_values
 
-restructured_data = get_restructured_data()
-results = str(classifier(restructured_data))
+# restructured_data = get_restructured_data()
+# results = str(classifier(restructured_data))
 
-# print(results)
+# print("Here's the result: ", results)
 
 def parse_results(results):
     task_match = re.search(r'Task Modifier:\s*([^,]+)', results)
@@ -29,7 +29,7 @@ def parse_results(results):
 
     return task_category, industry_category, skills_category
 
-task_category, industry_category, skills_category = parse_results(results)
+# task_category, industry_category, skills_category = parse_results(results)
 
 # print(task_category)
 # print(industry_category)
