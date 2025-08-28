@@ -15,3 +15,5 @@ def run_pipeline(data):
 # Final output need to be plugged into main.py
 data = get_rag_input()
 print(run_pipeline(data))
+
+# File to be deleted as everything is in ae pipeline.

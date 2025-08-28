@@ -21,6 +21,6 @@ def run_pipeline():
 #    S3Client().delete_file("restructured_data.txt")
 
     # Output
-    print(f"Based on the IMF’s Gen-AI report (2024): {final_score}, {risk_level}, {interpretation}")
+    print(f"Based on the IMF’s Gen-AI report (2024): The score is: {final_score}.\nThe risk is classifed as {risk_level}.\nInterpretation: {interpretation}")
 
 run_pipeline()
