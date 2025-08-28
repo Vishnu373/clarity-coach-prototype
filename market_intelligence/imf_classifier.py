@@ -1,10 +1,10 @@
 from services.prompts import IMF_CLASSIFICATION_PROMPT
 import json
-from input_preparation.restructuring import get_restructured_data
+from services.restructuring import get_restructured_data
 from services.model_client import gpt_model
 import re
 
-def imf_classifier(data):
+def classifier(data):
     prompt = IMF_CLASSIFICATION_PROMPT.format(
         text=json.dumps(data, ensure_ascii=False)
     )
@@ -13,11 +13,11 @@ def imf_classifier(data):
     return imf_values
 
 restructured_data = get_restructured_data()
-results = str(imf_classifier(restructured_data))
+results = str(classifier(restructured_data))
 
 # print(results)
 
-def parse_imf_classification(results):
+def parse_results(results):
     task_match = re.search(r'Task Modifier:\s*([^,]+)', results)
     industry_match = re.search(r'Industry Risk Adjustment:\s*([^,]+)', results)
     skill_match = re.search(r'Skill Modifier:\s*(.+)', results)
@@ -29,7 +29,7 @@ def parse_imf_classification(results):
 
     return task_category, industry_category, skills_category
 
-task_category, industry_category, skills_category = parse_imf_classification(results)
+task_category, industry_category, skills_category = parse_results(results)
 
 # print(task_category)
 # print(industry_category)
