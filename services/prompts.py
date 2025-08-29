@@ -138,8 +138,7 @@ Give me the final output in following format for each role:
 }}
 """
 
-IMF_CLASSIFICATION_PROMPT = """You are an expert resume classifier. Classify the following resume according to these tables:
-
+EVALUATION_PROMPT = """You are an expert resume classifier. Classify the following resume according to these tables:
 Table 1: Task Modifier
 Routine Tasks → Examples: Data entry, scheduling
 Creative Tasks → Examples: Storytelling, branding
@@ -157,20 +156,34 @@ Creative Problem Solving → Examples: Strategy, design thinking
 Emotional Intelligence → Examples: Leadership, negotiation
 AI Collaboration → Examples: Prompting, tool orchestration
 
-**Instructions:** 
+INSTRUCTIONS: 
 - Read the resume carefully.
 - Identify the task type, industry, and key skills.
+
+FOR SCORE_EVALUATION:-
 - Map each to the closest category in the tables.
-- Fro table 1 and table 3 - choose multiple categories if available.
-- It must come under one category from each table.
+- From Table 1 and Table 3 you may choose multiple categories if applicable.
+- From Table 2 you must choose exactly one category.
 
-**Output Format:**
-- Output in this exact format as string variables
-- As a single line string without any newline characters as below:
-Task Modifier: <category from Table 1>, Industry Risk Adjustment: <category from Table 2>, Skill Modifier: <category from Table 3>
+FOR UPSKILL AND SUGGESTED_JOB_TITLES:-
+- Suggested skills MUST be directly relevant to the user's current role, current skills, and classified categories. Do not suggest random or unrelated skills.
+- Suggest 1 (minimum) to 3 (maximum) skills in "upskill".
+- Suggest 1 (minimum) to 3 (maximum) realistic job titles in "suggested_job_titles" that align with the new skills AND the user’s background.
+- Return ONLY these JSON objects. Do not add explanations, comments, or extra text.
 
-**Important:**
-- Return ONLY the classification string.
+"SCORE_EVALUATION": {{
+  "task_modifier": [ "..." ], 
+  "industry_risk_adjustment": "...", 
+  "skill_modifier": [ "..." ]
+}}
+
+"UPSKILL": {{
+  "skills": ["...", "..."]
+}}
+
+"SUGGESTED_JOB_TITLES": {{
+  "job_titles": ["...", "..."]
+}}
 
 Resume: {text}
 """
