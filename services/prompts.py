@@ -171,18 +171,18 @@ FOR UPSKILL AND SUGGESTED_JOB_TITLES:-
 - Suggest 1 (minimum) to 3 (maximum) realistic job titles in "suggested_job_titles" that align with the new skills AND the user’s background.
 - Return ONLY these JSON objects. Do not add explanations, comments, or extra text.
 
-"SCORE_EVALUATION": {{
-  "task_modifier": [ "..." ], 
-  "industry_risk_adjustment": "...", 
-  "skill_modifier": [ "..." ]
-}}
-
-"UPSKILL": {{
-  "skills": ["...", "..."]
-}}
-
-"SUGGESTED_JOB_TITLES": {{
-  "job_titles": ["...", "..."]
+{{
+  "SCORE_EVALUATION": {{
+    "task_modifier": [ "..." ], 
+    "industry_risk_adjustment": "...", 
+    "skill_modifier": [ "..." ]
+  }},
+  "UPSKILL": {{
+    "skills": ["...", "..."]
+  }},
+  "SUGGESTED_JOB_TITLES": {{
+    "job_titles": ["...", "..."]
+  }}
 }}
 
 Resume: {text}

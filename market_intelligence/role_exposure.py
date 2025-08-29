@@ -1,4 +1,11 @@
-def score_calculator(task_category, industry_category, skills_category):
+def get_score_evaluators(score_evaluation):
+    tasks_category = score_evaluation["task_modifier"]
+    industry_category = score_evaluation["industry_risk_adjustment"]
+    skills_category = score_evaluation["skill_modifier"]
+
+    return tasks_category, industry_category, skills_category
+
+def score_calculator(tasks_category, industry_category, skills_category):
     """
     Calculates the AI risk score based on task, industry, and skills categories.
     
@@ -39,13 +46,14 @@ def score_calculator(task_category, industry_category, skills_category):
         'AI Collaboration': -30
     }
 
-    # Add task score
-    score += task_scores.get(task_category, 0)
+    # Add all task score (multiple values possible)
+    for task in tasks_category:
+        score += task_scores.get(task, 0)
 
     # Add industry score
     score += industry_scores.get(industry_category, 0)
 
-    # Add all skills scores
+    # Add all skills scores (multiple values possible)
     for skill in skills_category:
         score += skills_scores.get(skill, 0)
 

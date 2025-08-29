@@ -15,23 +15,13 @@ def classifier(data):
 restructured_data = get_restructured_data()
 results = str(classifier(restructured_data))
 
-print("Here's the result: ", results)
+# print("Here's the result: ", results)
 
-# def parse_results(results):
-#     task_match = re.search(r'Task Modifier:\s*([^,]+)', results)
-#     industry_match = re.search(r'Industry Risk Adjustment:\s*([^,]+)', results)
-#     skill_match = re.search(r'Skill Modifier:\s*(.+)', results)
+def parse_data(data):
+    data = json.loads(data)
 
-#     # Extract values or empty string if not found
-#     task_category = task_match.group(1).strip() if task_match else ""
-#     industry_category = industry_match.group(1).strip() if industry_match else ""
-#     skills_category = skill_match.group(1).strip() if skill_match else ""
+    score_evaluation = data["SCORE_EVALUATION"]
+    upskill = data["UPSKILL"]
+    suggested_job_titles = data["SUGGESTED_JOB_TITLES"]
 
-#     return task_category, industry_category, skills_category
-
-# # task_category, industry_category, skills_category = parse_results(results)
-
-# # print(task_category)
-# # print(industry_category)
-# # print(skills_category)
-
+    return score_evaluation, upskill, suggested_job_titles
