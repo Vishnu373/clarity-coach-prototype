@@ -2,6 +2,8 @@ from market_intelligence.imf_classifier import parse_data
 from market_intelligence.role_exposure import get_score_evaluators, score_calculator
 from analysis_and_enhancement.restructuring import get_restructured_data
 from market_intelligence.imf_classifier import classifier
+from services.model_processor import get_market_intelligence_input
+from market_intelligence.job_fetch import search_jobs, print_output
 
 def run_pipeline():
     # 1. Getting the data
@@ -25,5 +27,19 @@ def run_pipeline():
 
     # 7. Upskill suggestions
     print("Suggested skills to upskill: ", upskill["skills"])
+
+    # 8. Jobs fetched
+    # 8.1. Preparing the required data
+    print("Suggested job titles: ", suggested_job_titles)
+
+    job_title = suggested_job_titles['job_titles'][0]
+
+
+    location_data = get_market_intelligence_input()
+    location = location_data["current_location_inferred"]["country"]
+
+    # 8.2 Inputing the data and getting the results
+    jobs = search_jobs(job_title, location)
+    print_output(jobs)
 
 run_pipeline()

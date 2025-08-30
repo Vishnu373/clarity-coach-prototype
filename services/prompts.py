@@ -168,7 +168,7 @@ FOR SCORE_EVALUATION:-
 FOR UPSKILL AND SUGGESTED_JOB_TITLES:-
 - Suggested skills MUST be directly relevant to the user's current role, current skills, and classified categories. Do not suggest random or unrelated skills.
 - Suggest 1 (minimum) to 3 (maximum) skills in "upskill".
-- Suggest 1 (minimum) to 3 (maximum) realistic job titles in "suggested_job_titles" that align with the new skills AND the user’s background.
+- Suggest 1 realistic job titles in "suggested_job_titles" that align with the new skills AND the user’s background.
 - Return ONLY these JSON objects. Do not add explanations, comments, or extra text.
 
 {{

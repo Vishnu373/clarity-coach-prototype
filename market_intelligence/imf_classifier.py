@@ -12,11 +12,6 @@ def classifier(data):
 
     return imf_values
 
-restructured_data = get_restructured_data()
-results = str(classifier(restructured_data))
-
-# print("Here's the result: ", results)
-
 def parse_data(data):
     data = json.loads(data)
 
@@ -25,3 +20,5 @@ def parse_data(data):
     suggested_job_titles = data["SUGGESTED_JOB_TITLES"]
 
     return score_evaluation, upskill, suggested_job_titles
+
+restructured_data = get_restructured_data()

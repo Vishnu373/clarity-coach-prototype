@@ -35,10 +35,3 @@ def print_output(jobs):
         print(f"   Posted: {posted}")
         print(f"   Link: {link}")
         print()
-
-
-job_title = "Data Scientist"
-location = "United States"
-
-jobs = search_jobs(job_title, location)
-print_output(jobs)
