@@ -11,3 +11,4 @@ numpy
 langchain
 tiktoken
 supabase
+google-search-results
