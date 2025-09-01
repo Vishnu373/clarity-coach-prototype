@@ -6,20 +6,6 @@ def get_score_evaluators(score_evaluation):
     return tasks_category, industry_category, skills_category
 
 def score_calculator(tasks_category, industry_category, skills_category):
-    """
-    Calculates the AI risk score based on task, industry, and skills categories.
-    
-    Parameters:
-    - task_category (list of str)
-    - industry_category (str)
-    - skills_category (list of str)
-    
-    Returns:
-    - final_score (int): Clamped score between 0 and 100
-    - risk_level (str)
-    - interpretation (str)
-    """
-
     # Base IMF value
     score = 40
 
@@ -46,18 +32,14 @@ def score_calculator(tasks_category, industry_category, skills_category):
         'AI Collaboration': -30
     }
 
-    # Add all task score (multiple values possible)
     for task in tasks_category:
         score += task_scores.get(task, 0)
 
-    # Add industry score
     score += industry_scores.get(industry_category, 0)
 
-    # Add all skills scores (multiple values possible)
     for skill in skills_category:
         score += skills_scores.get(skill, 0)
 
-    # Clamp between 0 and 100
     final_score = max(0, min(100, score))
 
     # Determine risk level and interpretation
