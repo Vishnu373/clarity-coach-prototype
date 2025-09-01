@@ -8,19 +8,22 @@ from rag.suggest import suggestions
 from utils.s3_client import S3Client
 import os
 from services.extraction_service import process_file
+from services.restructuring import get_restructured_data
 
 load_dotenv()
 BUCKET_NAME = os.getenv("AWS_S3_BUCKET")
 
-def run_pipeline(uploaded_file):
-    # 0. Get the uploaded file
-    file_bytes = uploaded_file.read()
+def run_ae_pipeline():
+    # # 0. Get the uploaded file
+    # file_bytes = uploaded_file.read()
 
-    # 1. Extracted the resume
-    extracted_data = process_file(uploaded_file.name, file_bytes, bucket_name=BUCKET_NAME)
+    # # 1. Extracted the resume
+    # extracted_data = process_file(uploaded_file.name, file_bytes, bucket_name=BUCKET_NAME)
 
-    # 2. Restructuring the resume
-    restructured_data = restructure_resume(extracted_data)
+    # # 2. Restructuring the resume
+    # restructured_data = restructure_resume(extracted_data)
+
+    restructured_data = get_restructured_data()
 
     # 3. Preparing it for RAG
     rag_input, _ = file_processing(restructured_data)

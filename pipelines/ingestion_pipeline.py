@@ -9,7 +9,7 @@ from rag.embedding import generate_embeddings
 from rag.indexing import upsert_chunks
 
 
-def run_pipeline():
+def run_ing_pipeline():
     # 0. Get the file from S3
     kb_text = get_file()
 

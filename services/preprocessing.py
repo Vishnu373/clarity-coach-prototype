@@ -1,5 +1,6 @@
 import re
 
+# Preprocessing text
 def preprocess_text(text: str) -> str:
     if isinstance(text, list):
         text = "\n".join(text)
