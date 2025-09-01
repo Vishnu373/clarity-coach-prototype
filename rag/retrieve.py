@@ -1,7 +1,6 @@
 # retrieve.py
-from services.model_client import embedding_model
+from utils.model_client import embedding_model
 from rag.indexing import search_similar
-from services.model_processor import get_rag_input
 
 """
 Get the matching job roles and responbilites/projects for each user's experience from the knowledge base.

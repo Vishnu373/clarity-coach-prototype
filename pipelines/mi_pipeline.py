@@ -1,6 +1,6 @@
 from market_intelligence.imf_classifier import parse_data
 from market_intelligence.role_exposure import get_score_evaluators, score_calculator
-from analysis_and_enhancement.restructuring import get_restructured_data
+from services.restructuring import get_restructured_data
 from market_intelligence.imf_classifier import classifier
 from services.model_processor import get_market_intelligence_input
 from market_intelligence.job_fetch import search_jobs, print_output

@@ -1,4 +1,4 @@
-from services.model_client import rag_model
+from utils.model_client import rag_model
 from services.prompts import AUGMENT_PROMPT
 import json
 
@@ -6,7 +6,6 @@ import json
 Augment prompt - Instructions + Retrieval results
 Generation - Augment prompt + LLM call
 """
-
 # Arugement passed -> retrieved results
 def suggestions(results):
     prompt = AUGMENT_PROMPT.format(

@@ -2,15 +2,16 @@ import os
 from pathlib import Path
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from typing import List, Dict
-
+from utils.s3_client import S3Client
 from pathlib import Path
 import os
 
-def get_file() -> Path:
-    path = Path(os.getenv("KB_PATH")).expanduser().resolve()
-    if not path.is_file():
-        raise FileNotFoundError(f"Knowledge base file not found at: {path}")
-    return path
+def get_file() -> str:
+    bucket_name = os.getenv("AWS_S3_BUCKET")
+    key = "knowledge_base.txt"
+    s3 = S3Client(bucket_name)
+
+    return s3.download_file(key)
 
 def chunk_text(text: str, chunk_size: int = 256, chunk_overlap: int = 30) -> List[Dict]:
     splitter = RecursiveCharacterTextSplitter(
@@ -25,16 +26,3 @@ def chunk_text(text: str, chunk_size: int = 256, chunk_overlap: int = 30) -> Lis
         {"chunk_id": idx, "content": chunk}
         for idx, chunk in enumerate(chunks)
     ]
-
-
-
-# kb_file = get_file()
-# print(f"Using KB: {kb_file}")
-# kb_text = kb_file.read_text(encoding="utf-8", errors="ignore")
-# chunks = chunk_text(kb_text)
-# print(f"Total chunks: {len(chunks)}")
-# for c in chunks[:10]:
-#     print(c)           
-
-
-        

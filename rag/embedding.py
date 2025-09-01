@@ -1,4 +1,4 @@
-from services.model_client import embedding_model
+from utils.model_client import embedding_model
 
 def generate_embeddings(chunks):
     results = []

@@ -7,7 +7,6 @@ class TxtPipeline:
         self.raw_text = ""
 
     def extract_text(self):
-        # Decode the bytes to a string
         self.raw_text = self.file_bytes.decode('utf-8', errors='ignore')
         return self.raw_text
 

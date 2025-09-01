@@ -17,7 +17,6 @@ class DigitalPDFPipeline:
     def extract_text(self):
         clustered_lines = []
 
-        # pdfplumber can read from BytesIO
         with pdfplumber.open(BytesIO(self.file_bytes)) as pdf:
             for page_index, page in enumerate(pdf.pages):
                 words = page.extract_words()
@@ -62,7 +61,6 @@ class DigitalPDFPipeline:
 
     def extract_tables(self):
         try:
-            # Write PDF bytes to a temp file
             with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
                 tmp_file.write(self.file_bytes)
                 tmp_path = tmp_file.name

@@ -1,7 +1,6 @@
 from supabase import create_client
 import os
 
-# get URL + anon/service key from Supabase dashboard
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
 
@@ -19,7 +18,6 @@ def upsert_chunks(chunks_with_embeddings):
         })
 
     supabase.table("job_chunks").insert(rows).execute()
-    print(f"Inserted {len(rows)} chunks into Supabase.")
 
 # Vector search
 def search_similar(query_embedding, top_k=3):
@@ -30,4 +28,5 @@ def search_similar(query_embedding, top_k=3):
         "match_job_chunks",
         {"query_embedding": query_embedding, "match_count": top_k}
     ).execute()
+
     return response.data

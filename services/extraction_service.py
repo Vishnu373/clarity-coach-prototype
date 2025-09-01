@@ -1,7 +1,6 @@
 import os
 from io import BytesIO
 from pdfminer.high_level import extract_text as extract_pdf_text
-
 from extraction.digital_pdf_extractor import DigitalPDFPipeline
 from extraction.scanned_pdf_extractor import ScannedPdfPipeline
 from extraction.word_docx_extractor import WordDocxPipeline
@@ -38,7 +37,6 @@ def validate_file(filename: str, file_bytes: bytes) -> dict:
     }
 
 def process_file(filename: str, file_bytes: bytes, bucket_name: str = None) -> dict:
-    """Validate file and run the appropriate extraction pipeline."""
     validation = validate_file(filename, file_bytes)
 
     if not validation["supported"]:

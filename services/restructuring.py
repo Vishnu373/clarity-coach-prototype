@@ -1,6 +1,6 @@
 from services.prompts import RESTRUCTURE_RESUME_PROMPT
-from services.model_client import gpt_model
-from services.s3_client import S3Client
+from utils.model_client import gpt_model
+from utils.s3_client import S3Client
 from io import BytesIO
 import json
 
@@ -31,5 +31,3 @@ def restructure_resume(data):
 def get_restructured_data():
     restructured_data = s3_client.download_file(_s3_key['restructured_data'])
     return restructured_data
-
-# print(get_restructured_data())
