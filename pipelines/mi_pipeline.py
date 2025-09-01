@@ -62,6 +62,6 @@ def run_mi_pipeline():
     display_jobs(jobs)
 
     # 7. Delete files from S3
-    S3Client().delete_file("restructured_data.json")
+    S3Client().delete_file("restructured_data.txt")
     S3Client().delete_file("market_intel.json")
   
