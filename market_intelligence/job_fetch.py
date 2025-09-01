@@ -1,6 +1,7 @@
 import os
 from serpapi import GoogleSearch
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")
@@ -24,7 +25,7 @@ def search_jobs(job_title, location):
 def print_output(jobs):
     for i, job in enumerate(jobs, 1):
         posted = job.get("detected_extensions", {}).get("posted_at")
-        # pick the first available apply link
+        
         link = None
         for opt in job.get("apply_options", []) or []:
             if opt.get("link"):

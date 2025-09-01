@@ -26,6 +26,6 @@ if uploaded_file:
     st.json(results_ae)
 
     st.write("Running Market Intelligence...")
-    results_mi = run_pipeline("assessment")
-    st.subheader("Market Intelligence Results")
-    st.json(results_mi)
+    st.subheader("Assessment Results")
+    run_pipeline("assessment")
+    

@@ -3,10 +3,27 @@ from market_intelligence.role_exposure import get_score_evaluators, score_calcul
 from services.restructuring import get_restructured_data
 from market_intelligence.imf_classifier import classifier
 from services.model_processor import get_market_intelligence_input
-from market_intelligence.job_fetch import search_jobs
+from market_intelligence.job_fetch import search_jobs, print_output
 from utils.s3_client import S3Client
 import streamlit as st
-import json
+
+def display_jobs(jobs):   
+    for job in jobs:
+        st.subheader(job['title'])
+        st.write(f"**Company:** {job['company_name']}")
+        st.write(f"**Location:** {job['location']}")
+        st.write(f"**Posted:** {job['extensions'][0] if job.get('extensions') else 'N/A'}")
+        
+        with st.expander("View Description"):
+            st.write(job.get('description', 'No description'))
+        
+        if job.get('apply_options'):
+            st.write("**Apply:**")
+            for option in job['apply_options']:
+                st.link_button(option['title'], option['link'])
+        
+        st.divider()
+
 
 def run_mi_pipeline():
     # 0. Getting the data
@@ -41,10 +58,8 @@ def run_mi_pipeline():
     # 6.2 Jobs fetched
     jobs = search_jobs(job_title, location)
 
-    print("Jobs fetched:")
-    print(jobs)
-    # jobs = json.loads(jobs)
-    # st.json({"jobs": jobs})
+    # 6.3. Prints the result
+    display_jobs(jobs)
 
     # 7. Delete files from S3
     S3Client().delete_file("restructured_data.json")
