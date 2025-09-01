@@ -1,0 +1,219 @@
+Role: AI Developer Intern
+Skills: NLP, CI/CD, AWS
+Projects: Deploy transformer model to AWS Lambda; Implement semantic search with ElasticSearch and BERT; Optimize inference time for text classification model
+
+Role: Frontend Developer (Junior)
+Skills: React, TypeScript, CSS
+Projects: Build accessible component library; Implement responsive dashboard with real-time data; Optimize web vitals for e-commerce site
+
+Role: Backend Engineer (Mid)
+Skills: Node.js, PostgreSQL, Redis
+Projects: Design high-throughput API for mobile app; Implement caching strategy reducing DB load by 40%; Migrate monolithic service to microservices architecture
+
+Role: DevOps Engineer (Senior)
+Skills: Kubernetes, Terraform, Prometheus
+Projects: Implement GitOps workflow for deployment automation; Design multi-region failover strategy; Optimize CI pipeline reducing build times by 60%
+
+Role: Data Engineer (Staff)
+Skills: Spark, Airflow, Delta Lake
+Projects: Design petabyte-scale data lake architecture; Implement real-time streaming pipeline for IoT data; Optimize ETL jobs reducing cloud costs by 35%
+
+Role: Mobile Developer (Junior)
+Skills: Flutter, Firebase, Dart
+Projects: Build cross-platform social media app; Implement offline-first data synchronization; Optimize app startup time by 50%
+
+Role: Security Engineer (Mid)
+Skills: Penetration Testing, OWASP, SIEM
+Projects: Implement automated security scanning in CI pipeline; Conduct infrastructure vulnerability assessment; Design zero-trust architecture for internal services
+
+Role: Machine Learning Engineer (Senior)
+Skills: PyTorch, MLflow, Feature Engineering
+Projects: Develop recommendation system increasing engagement by 25%; Implement automated model monitoring system; Optimize training pipeline using distributed computing
+
+Role: Full Stack Developer (Mid)
+Skills: Next.js, GraphQL, MongoDB
+Projects: Build SSR e-commerce platform; Implement real-time collaboration features; Design database schema for complex domain model
+
+Role: Cloud Architect (Senior)
+Skills: AWS, GCP, IaC
+Projects: Design multi-cloud disaster recovery plan; Migrate on-premise infrastructure to cloud; Implement cost monitoring system saving $500k annually
+
+Role: QA Automation Engineer (Junior)
+Skills: Selenium, Cypress, TestNG
+Projects: Implement end-to-end test suite for web application; Build visual regression testing pipeline; Integrate automated testing with deployment pipeline
+
+Role: Database Administrator (Mid)
+Skills: SQL, Query Optimization, Replication
+Projects: Implement database sharding for horizontal scaling; Design backup and recovery strategy; Optimize slow queries reducing response time by 70%
+
+Role: Game Developer (Junior)
+Skills: Unity, C#, Shader Programming
+Projects: Implement multiplayer networking system; Develop procedural generation algorithms; Optimize rendering pipeline for mobile devices
+
+Role: Site Reliability Engineer (Senior)
+Skills: Observability, Incident Management, Capacity Planning
+Projects: Implement service level objectives framework; Design auto-scaling system for variable workloads; Reduce MTTR by implementing comprehensive monitoring
+
+Role: Embedded Systems Engineer (Mid)
+Skills: C, RTOS, Device Drivers
+Projects: Develop firmware for IoT edge device; Optimize power consumption for battery-operated device; Implement over-the-air update mechanism
+
+Role: Technical Lead (Staff)
+Skills: System Design, Mentoring, Roadmapping
+Projects: Lead migration from legacy to modern architecture; Establish engineering best practices across teams; Design technical strategy for product expansion
+
+Role: Blockchain Developer (Senior)
+Skills: Solidity, Smart Contracts, Ethereum
+Projects: Develop DeFi protocol with yield farming; Implement gas optimization techniques; Design secure multi-signature wallet system
+
+Role: AR/VR Developer (Mid)
+Skills: Unity, ARKit, 3D Math
+Projects: Develop markerless tracking solution; Implement hand gesture recognition; Optimize rendering for standalone VR headset
+
+Role: Data Scientist (Junior)
+Skills: Python, Pandas, Statistical Modeling
+Projects: Build churn prediction model; Implement A/B testing framework; Develop customer segmentation using clustering
+
+Role: Technical Writer (Mid)
+Skills: Documentation, API Guides, Tutorials
+Projects: Create developer onboarding materials; Automate API reference documentation; Implement documentation localization system
+
+Role: Release Engineer (Senior)
+Skills: Build Systems, Artifact Management, Deployment Strategies
+Projects: Implement progressive rollout system; Design canary release framework; Automate multi-environment deployment pipeline
+
+Role: Computer Vision Engineer (Mid)
+Skills: OpenCV, TensorFlow, Image Processing
+Projects: Develop object detection system; Implement real-time video analytics; Optimize model for edge deployment
+
+Role: Performance Engineer (Senior)
+Skills: Profiling, Benchmarking, Optimization
+Projects: Identify and fix memory leaks in application; Reduce API latency by 80% through optimization; Implement automated performance regression testing
+
+Role: Platform Engineer (Staff)
+Skills: Internal Tools, Developer Experience, SDKs
+Projects: Build self-service deployment platform; Design unified logging and tracing system; Create internal CLI tool increasing developer productivity
+
+Role: iOS Developer (Mid)
+Skills: Swift, SwiftUI, Combine
+Projects: Implement dark mode across application; Optimize app size using asset catalogs; Build custom interactive transitions
+
+Role: Android Developer (Senior)
+Skills: Kotlin, Jetpack Compose, Dagger
+Projects: Migrate from Java to Kotlin codebase; Implement modular app architecture; Reduce ANR rate by 90% through optimization
+
+Role: Technical Program Manager
+Skills: Project Management, Stakeholder Alignment, Risk Mitigation
+Projects: Coordinate cross-team migration project; Implement agile process improvements; Manage technical dependencies for product launch
+
+Role: Chief Technology Officer
+Skills: Technology Strategy, Team Building, Innovation
+Projects: Define 3-year technical vision; Establish engineering culture principles; Lead technical due diligence for acquisitions
+
+Role: Quantitative Developer (Senior)
+Skills: Algorithmic Trading, Numerical Methods, High Frequency Systems
+Projects: Develop low-latency trading strategy; Implement backtesting framework; Optimize order execution algorithms
+
+Role: BI Developer (Mid)
+Skills: Data Warehousing, ETL, Dashboarding
+Projects: Design star schema for analytics; Build self-service reporting platform; Implement data quality monitoring
+
+Role: MLOps Engineer (Senior)
+Skills: Model Deployment, Monitoring, Reproducibility
+Projects: Implement model versioning system; Design A/B testing framework for ML models; Build feature store for consistent training/serving
+
+Role: Accessibility Engineer (Mid)
+Skills: WCAG, Screen Readers, Inclusive Design
+Projects: Implement keyboard navigation for web app; Conduct accessibility audit and remediation; Build automated a11y testing pipeline
+
+Role: Growth Engineer (Junior)
+Skills: A/B Testing, Analytics, Feature Flags
+Projects: Implement experimentation platform; Analyze user funnel drop-off points; Build personalized onboarding flow
+
+Role: Firmware Engineer (Senior)
+Skills: Embedded C, BSP, Low-level Debugging
+Projects: Develop bootloader for secure firmware updates; Optimize interrupt handling for real-time system; Implement power management for battery device
+
+Role: API Developer (Mid)
+Skills: REST, GraphQL, API Design
+Projects: Design versioning strategy for public API; Implement rate limiting and throttling; Build comprehensive API documentation portal
+
+Role: Cloud Security Engineer (Senior)
+Skills: IAM, Encryption, Compliance
+Projects: Implement secrets management system; Design VPC architecture with security zones; Automate compliance checks for cloud resources
+
+Role: Developer Advocate
+Skills: Public Speaking, Community Building, Content Creation
+Projects: Create technical tutorial series; Organize developer hackathon; Build sample applications showcasing platform
+
+Role: Research Engineer (Senior)
+Skills: Prototyping, Paper Implementation, Novel Algorithms
+Projects: Implement state-of-the-art research paper; Develop novel neural network architecture; Optimize algorithm for production constraints
+
+Role: IT Automation Engineer (Mid)
+Skills: Ansible, Puppet, Infrastructure as Code
+Projects: Automate employee onboarding workflow; Implement configuration management for workstations; Build self-service IT request portal
+
+Role: Edge Computing Engineer (Senior)
+Skills: IoT, Fog Computing, Distributed Systems
+Projects: Design edge data processing pipeline; Implement federated learning system; Optimize ML model for edge deployment
+
+Role: ERP Developer (Mid)
+Skills: SAP, Business Process Integration, Custom Workflows
+Projects: Implement custom reporting module; Integrate ERP with e-commerce platform; Automate inventory management processes
+
+Role: Natural Language Engineer (Senior)
+Skills: LLMs, Text Generation, Information Extraction
+Projects: Fine-tune language model for domain-specific tasks; Implement RAG architecture for knowledge retrieval; Develop text summarization pipeline
+
+Role: GIS Developer (Mid)
+Skills: Geospatial Analysis, Mapbox, PostGIS
+Projects: Build real-time tracking visualization; Implement spatial query optimization; Develop custom map styling system
+
+Role: Lead Software Engineer
+Skills: Architecture, Code Reviews, Technical Decision Making
+Projects: Define service boundaries for microservices; Establish coding standards and guidelines; Lead technical design for major features
+
+Role: Principal Engineer
+Skills: System Architecture, Cross-team Collaboration, Innovation
+Projects: Design platform-wide caching strategy; Lead technical evaluation of new technologies; Solve complex cross-cutting technical challenges
+
+Role: Director of Engineering
+Skills: Team Leadership, Strategic Planning, Process Improvement
+Projects: Restructure engineering organization for scale; Implement career growth framework; Align engineering priorities with business goals
+
+Role: Software Architect
+Skills: Design Patterns, Scalability, Trade-off Analysis
+Projects: Design event-driven architecture; Evaluate database technologies for use case; Create architecture decision records
+
+Role: Test Infrastructure Engineer (Senior)
+Skills: Test Frameworks, Flake Detection, Parallelization
+Projects: Build hermetic testing environment; Implement test sharding for CI speedup; Develop flaky test detection system
+
+Role: Observability Engineer (Mid)
+Skills: Metrics, Logging, Distributed Tracing
+Projects: Implement centralized logging solution; Design service level indicator framework; Build anomaly detection for metrics
+
+Role: Chaos Engineer (Senior)
+Skills: Failure Injection, Resilience Testing, Game Days
+Projects: Design failure scenarios for resilience testing; Implement automated chaos experiments; Lead company-wide game day exercise
+
+Role: Compliance Engineer (Mid)
+Skills: GDPR, HIPAA, Security Standards
+Projects: Implement data retention policy; Automate compliance evidence collection; Design audit logging system
+
+Role: Web3 Developer (Senior)
+Skills: Smart Contracts, Decentralized Apps, Blockchain Protocols
+Projects: Develop DAO governance system; Implement cross-chain bridge; Optimize gas usage for DeFi protocol
+
+Role: Kernel Developer (Senior)
+Skills: Linux Kernel, Device Drivers, Memory Management
+Projects: Implement new filesystem feature; Optimize scheduler for specific workload; Develop security subsystem enhancement
+
+Role: Compiler Engineer (Senior)
+Skills: LLVM, Static Analysis, Optimization Passes
+Projects: Implement new language frontend; Develop static analysis tool; Optimize code generation for specific architecture
+
+Role: Distributed Systems Engineer (Staff)
+Skills: Consensus Algorithms, Partition Tolerance, Eventual Consistency
+Projects: Design sharded key-value store; Implement CRDT-based collaboration system; Optimize distributed transaction protocol

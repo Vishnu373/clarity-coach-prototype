@@ -1,0 +1,48 @@
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY")
+
+client = OpenAI(api_key=api_key)
+
+def gpt_model(prompt_template: str, text: str = "") -> str:
+    if "{text}" in prompt_template:
+        prompt = prompt_template.format(text=text)
+    else:
+        prompt = prompt_template
+    
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.5
+    )
+    return response.choices[0].message.content.strip()
+
+def rag_model(prompt_template: str, text: str = "") -> str:
+    if "{text}" in prompt_template:
+        prompt = prompt_template.format(text=text)
+    else:
+        prompt = prompt_template
+    
+    response = client.chat.completions.create(
+        model="gpt-5-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+    )
+    return response.choices[0].message.content.strip()
+
+def embedding_model(text):
+    text = text.replace("\n", " ")
+    response = client.embeddings.create (
+        input = [text],
+        model = "text-embedding-3-small"
+    )
+    return response.data[0].embedding
