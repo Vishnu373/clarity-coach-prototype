@@ -9,13 +9,12 @@ AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 AWS_S3_BUCKET = os.getenv("AWS_S3_BUCKET")
+KB_KEY = os.getenv("KB_KEY")
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
 
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")
-
-KB_PATH = os.getenv("KB_PATH", "data/knowledge__base.txt")
 
 GPT_4O_MINI_MODEL = "gpt-4o-mini"
 GPT_5_MODEL = "gpt-5"

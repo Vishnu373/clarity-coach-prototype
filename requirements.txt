@@ -3,7 +3,6 @@ openai
 streamlit
 pdfminer.six
 python-docx
-camelot-py
 pdfplumber
 boto3
 faiss-cpu
@@ -12,3 +11,4 @@ langchain
 tiktoken
 supabase
 google-search-results
+sentence-transformers

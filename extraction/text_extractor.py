@@ -1,14 +1,15 @@
-from io import BytesIO
 from .preprocessing import preprocess_text
 
-class TxtPipeline:
+class TextPipeline:
     def __init__(self, file_bytes: bytes):
         self.file_bytes = file_bytes
-        self.raw_text = ""
 
     def extract_text(self):
-        self.raw_text = self.file_bytes.decode('utf-8', errors='ignore')
-        return self.raw_text
+        try:
+            return self.file_bytes.decode('utf-8', errors='ignore')
+        except Exception as e:
+            print(f"Text extraction failed: {e}")
+            return ""
 
     def run_pipeline(self):
         raw_text = self.extract_text()
