@@ -1,11 +1,13 @@
-from market_intelligence.imf_classifier import parse_data
-from market_intelligence.role_exposure import get_score_evaluators, score_calculator
-from services.restructuring import get_restructured_data
-from market_intelligence.imf_classifier import classifier
-from services.model_processor import get_market_intelligence_input
-from market_intelligence.job_fetch import search_jobs, print_output
-from utils.s3_client import S3Client
+"""Market Intelligence pipeline for AI risk assessment and job recommendations"""
+
 import streamlit as st
+from market_intelligence.imf_classifier import parse_data, classifier
+from market_intelligence.role_exposure import get_score_evaluators, score_calculator
+from market_intelligence.job_fetch import search_jobs
+from services.restructuring import get_restructured_data
+from services.model_processor import get_market_intelligence_input
+from utils.s3_client import S3Client
+from config import S3_RESTRUCTURED_DATA_KEY, S3_MARKET_INTEL_KEY
 
 def display_jobs(jobs):   
     for job in jobs:
@@ -26,6 +28,7 @@ def display_jobs(jobs):
 
 
 def run_mi_pipeline():
+    """Run the Market Intelligence pipeline"""
     # 0. Getting the data
     restructured_data = get_restructured_data()
 
@@ -62,6 +65,6 @@ def run_mi_pipeline():
     display_jobs(jobs)
 
     # 7. Delete files from S3
-    S3Client().delete_file("restructured_data.txt")
-    S3Client().delete_file("market_intel.json")
+    S3Client().delete_file(S3_RESTRUCTURED_DATA_KEY)
+    S3Client().delete_file(S3_MARKET_INTEL_KEY)
   

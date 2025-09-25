@@ -2,7 +2,7 @@ import pdfplumber
 import camelot
 from collections import defaultdict
 from io import BytesIO
-from services.preprocessing import preprocess_text
+from .preprocessing import preprocess_text
 import tempfile
 import os
 

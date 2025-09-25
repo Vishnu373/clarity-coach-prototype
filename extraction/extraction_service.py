@@ -1,12 +1,13 @@
 import os
 from io import BytesIO
 from pdfminer.high_level import extract_text as extract_pdf_text
-from extraction.digital_pdf_extractor import DigitalPDFPipeline
-from extraction.scanned_pdf_extractor import ScannedPdfPipeline
-from extraction.word_docx_extractor import WordDocxPipeline
-from extraction.text_txt_extractor import TxtPipeline
+from .digital_pdf_extractor import DigitalPDFPipeline
+from .scanned_pdf_extractor import ScannedPdfPipeline
+from .word_docx_extractor import WordDocxPipeline
+from .text_txt_extractor import TxtPipeline
+from config import SUPPORTED_FILE_EXTENSIONS
 
-SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".txt"}
+SUPPORTED_EXTENSIONS = SUPPORTED_FILE_EXTENSIONS
 
 def get_file_extension(filename: str) -> str:
     return os.path.splitext(filename)[-1].lower()

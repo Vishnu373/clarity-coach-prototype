@@ -1,9 +1,9 @@
 import boto3
-import os
+from config import AWS_REGION
 
 class TextractClient:
     def __init__(self, region=None):
-        self.region = region or os.getenv("AWS_REGION", "us-east-1")
+        self.region = region or AWS_REGION
         self.client = boto3.client("textract", region_name=self.region)
 
     def detect_document_text(self, bucket_name, object_name):

@@ -1,13 +1,13 @@
 import boto3
 from botocore.exceptions import ClientError
 import uuid
-import os
 from typing import BinaryIO, Optional
+from config import AWS_REGION, AWS_S3_BUCKET
 
 class S3Client:
     def __init__(self, region: Optional[str] = None, bucket_name: Optional[str] = None):
-        self.region = region or os.getenv("AWS_REGION", "us-east-1")
-        self.bucket_name = bucket_name or os.getenv("AWS_S3_BUCKET")
+        self.region = region or AWS_REGION
+        self.bucket_name = bucket_name or AWS_S3_BUCKET
         if not self.bucket_name:
             raise ValueError("Bucket name must be provided via constructor or env var.")
         self.s3 = boto3.client('s3', region_name=self.region)

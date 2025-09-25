@@ -1,10 +1,5 @@
-import os
 from serpapi import GoogleSearch
-from dotenv import load_dotenv
-import json
-
-load_dotenv()
-SERPAPI_KEY = os.getenv("SERPAPI_KEY")
+from config import SERPAPI_KEY
 
 def search_jobs(job_title, location):
     if not SERPAPI_KEY:

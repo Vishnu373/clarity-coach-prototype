@@ -1,12 +1,8 @@
 import streamlit as st
 from pipelines import run_pipeline
-from dotenv import load_dotenv
-import os
-from services.extraction_service import process_file
+from extraction import process_file
 from services.restructuring import restructure_resume
-
-load_dotenv()
-BUCKET_NAME = os.getenv("AWS_S3_BUCKET")
+from config import AWS_S3_BUCKET
 
 st.set_page_config("Clarity Coach Prototype", layout='centered')
 st.title("Clarity Coach Prototype")
@@ -17,7 +13,7 @@ if uploaded_file:
     st.write("File uploaded. Processing...")
 
     file_bytes = uploaded_file.read()
-    extracted_data = process_file(uploaded_file.name, file_bytes, bucket_name=BUCKET_NAME)
+    extracted_data = process_file(uploaded_file.name, file_bytes, bucket_name=AWS_S3_BUCKET)
     restructured_data = restructure_resume(extracted_data)
 
     st.write("Running Strategic Enhancement...")

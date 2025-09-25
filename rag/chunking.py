@@ -1,19 +1,15 @@
-import os
 from pathlib import Path
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from typing import List, Dict
 from utils.s3_client import S3Client
-from pathlib import Path
-import os
+from config import S3_KNOWLEDGE_BASE_KEY, CHUNK_SIZE, CHUNK_OVERLAP
 
 def get_file() -> str:
-    bucket_name = os.getenv("AWS_S3_BUCKET")
-    key = "knowledge_base.txt"
-    s3 = S3Client(bucket_name)
+    """Download knowledge base file from S3"""
+    s3 = S3Client()
+    return s3.download_file(S3_KNOWLEDGE_BASE_KEY)
 
-    return s3.download_file(key)
-
-def chunk_text(text: str, chunk_size: int = 256, chunk_overlap: int = 30) -> List[Dict]:
+def chunk_text(text: str, chunk_size: int = CHUNK_SIZE, chunk_overlap: int = CHUNK_OVERLAP) -> List[Dict]:
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,

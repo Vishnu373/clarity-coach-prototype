@@ -1,5 +1,5 @@
 from io import BytesIO
-from services.preprocessing import preprocess_text
+from .preprocessing import preprocess_text
 
 class TxtPipeline:
     def __init__(self, file_bytes: bytes):

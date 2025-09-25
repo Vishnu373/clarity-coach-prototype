@@ -1,6 +1,6 @@
 from io import BytesIO
 from docx import Document
-from services.preprocessing import preprocess_text
+from .preprocessing import preprocess_text
 
 class WordDocxPipeline:
     def __init__(self, file_bytes: bytes):

@@ -1,9 +1,6 @@
-from dotenv import load_dotenv
-from rag.embedding import generate_embeddings
-from rag.indexing import search_similar
-from services.model_processor import get_rag_input
-from rag.retrieve import retrieve_all_chunks
-from rag.suggest import suggestions
+"""Ingestion pipeline for processing knowledge base into vector embeddings.
+This is a one-time process to prepare the knowledge base for RAG."""
+
 from rag.chunking import get_file, chunk_text
 from rag.embedding import generate_embeddings
 from rag.indexing import upsert_chunks

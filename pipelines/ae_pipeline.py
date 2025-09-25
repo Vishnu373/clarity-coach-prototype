@@ -1,28 +1,15 @@
-from services.restructuring import restructure_resume
+"""Analysis Enhancement pipeline for resume processing and suggestions"""
+
 from services.model_processor import file_processing
-from dotenv import load_dotenv
-from rag.embedding import generate_embeddings
-from rag.indexing import search_similar
 from rag.retrieve import retrieve_all_chunks
 from rag.suggest import suggestions
 from utils.s3_client import S3Client
-import os
-from services.extraction_service import process_file
 from services.restructuring import get_restructured_data
-
-load_dotenv()
-BUCKET_NAME = os.getenv("AWS_S3_BUCKET")
+from config import S3_RAG_INPUT_KEY
 
 def run_ae_pipeline():
-    # # 0. Get the uploaded file
-    # file_bytes = uploaded_file.read()
-
-    # # 1. Extracted the resume
-    # extracted_data = process_file(uploaded_file.name, file_bytes, bucket_name=BUCKET_NAME)
-
-    # # 2. Restructuring the resume
-    # restructured_data = restructure_resume(extracted_data)
-
+    """Run the Analysis Enhancement pipeline"""
+    # Get restructured data from S3 
     restructured_data = get_restructured_data()
 
     # 3. Preparing it for RAG
@@ -35,7 +22,7 @@ def run_ae_pipeline():
     suggested_results = suggestions(retrieved_results)
 
     # 6. Delete the input files from S3
-    S3Client().delete_file("rag_input.json")
+    S3Client().delete_file(S3_RAG_INPUT_KEY)
 
     return suggested_results
 
