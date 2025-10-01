@@ -8,7 +8,6 @@ from .text_extractor import TextPipeline
 __all__ = [
     'validation_pipeline',
     'validate_file_extension',
-    'validate_resume_content', 
     'preprocess_text',
     'DigitalPDFPipeline',
     'ScannedPdfPipeline',

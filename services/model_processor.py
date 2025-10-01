@@ -5,11 +5,10 @@ from typing import Tuple
 
 from services.prompts import HYBRID_EXTRACTION_PROMPT
 from utils.model_client import gpt_model
-from utils.s3_client import S3Client
+from services.s3_client import upload_file, delete_file, get_bucket
 from config import S3_MARKET_INTEL_KEY
 
-# Create S3 client instance
-s3_client = S3Client()
+# S3 operations using functional interface
 
 def file_processing(extracted_data: dict) -> Tuple[dict, dict]:
     
@@ -37,7 +36,7 @@ def file_processing(extracted_data: dict) -> Tuple[dict, dict]:
         # Upload to S3       
         market_json = json.dumps(market_intelligence_input, ensure_ascii=False, indent=2).encode('utf-8')
         market_file_obj = BytesIO(market_json)
-        s3_client.upload_file(market_file_obj, S3_MARKET_INTEL_KEY)
+   #     s3_client.upload_file(market_file_obj, S3_MARKET_INTEL_KEY)
 
         return rag_input, market_intelligence_input
     
@@ -47,5 +46,5 @@ def file_processing(extracted_data: dict) -> Tuple[dict, dict]:
 # Getter functions to download from S3
 def get_market_intelligence_input():
     """Download market intelligence data from S3"""
-    json_data = s3_client.download_file(S3_MARKET_INTEL_KEY)
-    return json.loads(json_data)
+ #   json_data = s3_client.download_file(S3_MARKET_INTEL_KEY)
+ #   return json.loads(json_data)
