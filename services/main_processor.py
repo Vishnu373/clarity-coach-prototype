@@ -35,7 +35,6 @@ class MainProcessor:
 
 
 def process_file(filename: str, file_bytes: bytes) -> dict:
-    """Quick processing function"""
     processor = MainProcessor()
     return processor.process_resume_file(filename, file_bytes)
 

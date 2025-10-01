@@ -26,9 +26,6 @@ if uploaded_file:
     
     # Display status
     if status["success"]:
-        st.success(status["message"])
-        st.info(f"{status['validation_reason']}")
-        
         # Show extracted content
         st.subheader("Extracted Text:")
         st.text_area(
@@ -37,14 +34,6 @@ if uploaded_file:
             height=300,
             help="This is the text extracted from your resume"
         )
-        
-        # Show file info
-        st.subheader("File Information:")
-        col1, col2 = st.columns(2)
-        with col1:
-            st.metric("File Size", f"{result['file_size']} bytes")
-        with col2:
-            st.metric("Word Count", len(result.get("text", "").split()))
         
         # Show tables if extracted
         if "tables" in result and result["tables"]:
