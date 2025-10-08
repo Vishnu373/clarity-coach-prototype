@@ -5,9 +5,7 @@ pdfminer.six
 python-docx
 pdfplumber
 boto3
-faiss-cpu
 numpy
-langchain
 tiktoken
 supabase
 google-search-results
