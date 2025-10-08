@@ -1,3 +1,5 @@
+"""To be update or deleted - later use"""
+
 RESTRUCTURE_RESUME_PROMPT = """
 You are a helpful AI structurer.  
 You received a messy resume.

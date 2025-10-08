@@ -18,7 +18,7 @@ SERPAPI_KEY = os.getenv("SERPAPI_KEY")
 
 GPT_4O_MINI_MODEL = "gpt-4o-mini"
 GPT_5_MODEL = "gpt-5"
-EMBEDDING_MODEL = "text-embedding-3-small"
+EMBEDDING_MODEL = "text-embedding-3-large"
 
 SUPPORTED_FILE_EXTENSIONS = {".pdf", ".docx", ".txt"}
 
