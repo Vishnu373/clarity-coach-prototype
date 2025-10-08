@@ -15,7 +15,7 @@ def restructure_resume(data):
             text=json.dumps(data, ensure_ascii=False)
         )
 
-    restructured_data = gpt_model(prompt)        
+    restructured_data = gpt_model(prompt)    
 
     # Upload the data to S3
     restructured_data_encoded = restructured_data.encode('utf-8')
