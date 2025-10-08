@@ -1,7 +1,7 @@
 import logging
 from io import BytesIO
-from services.s3_client import upload_file, delete_file, get_bucket
-from services.textract_client import TextractClient
+from utils.s3_client import upload_file, delete_file, get_bucket
+from utils.textract_client import TextractClient
 from .preprocessing import preprocess_text
 
 # Configure logging

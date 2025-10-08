@@ -1,6 +1,6 @@
 import json
 import logging
-from services.llm_client import smaller_model
+from utils.llm_client import smaller_model
 from .prompts import get_field_identification_prompt, get_system_message
 
 logger = logging.getLogger(__name__)
