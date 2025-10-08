@@ -42,7 +42,7 @@ def validation_pipeline(filename: str, file_bytes: bytes, bucket_name: str = Non
     elif ext == ".txt":
         pipeline = TextPipeline(file_bytes)
     else:
-        return {"error": f"No pipeline for file type: {ext}"}
+        return {"error": "Invalid file"}
     
     # Step 3: Extract content
     extracted_data = pipeline.run_pipeline()

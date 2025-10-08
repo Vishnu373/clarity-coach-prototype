@@ -1,5 +1,6 @@
 import streamlit as st
-from services.main_processor import MainProcessor
+import json
+from services.processor import Processor
 
 # Page configuration
 st.set_page_config("Clarity Coach", layout='centered')
@@ -20,27 +21,16 @@ if uploaded_file:
     # Read file bytes
     file_bytes = uploaded_file.read()
     
-    processor = MainProcessor()
-    result = processor.process_resume(uploaded_file.name, file_bytes)
-    status = processor.get_processing_status(result)
+    processor = Processor()
+    result = processor.pipeline(uploaded_file.name, file_bytes)
     
-    # Display status
-    if status["success"]:
-        # Show extracted content
-        st.subheader("Extracted Text:")
-        st.text_area(
-            "Content", 
-            result.get("text", ""), 
-            height=300,
-            help="This is the text extracted from your resume"
-        )
-        
-        # Show tables if extracted
-        if "tables" in result and result["tables"]:
-            st.subheader("Tables Found:")
-            for i, table in enumerate(result["tables"]):
-                with st.expander(f"Table {i+1}"):
-                    st.write(table)
+    # Display results
+    if "error" in result:
+        st.error(f"Error: {result['error']}")
     else:
-        st.error(status["message"])
+        st.success("Resume processed successfully!")
+        
+        # Display identified fields
+        st.subheader("Identified Resume Fields")
+        st.json(result)
     
